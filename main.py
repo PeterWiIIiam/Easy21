@@ -9,7 +9,7 @@ def draw_randomly(initialize=False):
                 print(initialize)
                 return random_number
         if random_color == 'red':
-                return -1 * random_number
+                return  -random_number
         return random_number
 
 
@@ -21,29 +21,37 @@ def initializer():
                  "player_sum" : player_card}
 
         return state
-                 
+
+
 
 def step(state, action):
 	
-        if action == "hits":
+        if action == 1:
                 player_card = draw_randomly()
                 state["player_sum"] += player_card
                 print(player_card)
-                if state["player_sum"] > 20:
-                        return None, -1 
+                if state["player_sum"] > 21:
+                        return None, -1
+                if state["player_sum"] < 1:
+                        return None, -1
                 else:
                         return state, 0
 
-        if action == "sticks":
+        if action == 0:
+                print("action step", action)
+
+                if state['dealer_sum'] > 21 or state['dealer_sum'] < 1:
+                        return None, 1
 
                 if state["dealer_sum"] < 17:
                         dealer_card = draw_randomly()
                         print(dealer_card)
                         state["dealer_sum"] += dealer_card
-                        step(state, "sticks")
-                
-                if state['dealer_sum'] > 20:
-                        return None, 1
+                        print("state when recur for dealer", state)
+                        step(state, 0)
+
+                if state["player_sum"] < 1:
+                        return None, -1
                         
                 if state["dealer_sum"] > state["player_sum"]:
                         return None, -1
@@ -53,20 +61,5 @@ def step(state, action):
                 
                 if state["dealer_sum"] == state["player_sum"]:
                         return None, 0
-                
-        
-def player(state):
-
-        print(state)
-        
-        if state != None:
-                state, reward = step(state, "sticks")
-                player(state)
-
-def main():
-        state = initializer()
-        player(state)
 
 
-if __name__ == "__main__":
-	main()
