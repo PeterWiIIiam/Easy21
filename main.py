@@ -1,8 +1,9 @@
 import numpy as np
 
 
+
 def draw_randomly(initialize=False):
-        random_color = np.random.choice(['red', 'black'], p=[1/3, 2/3])
+        random_color = np.random.choice(['red', 'black'], p=[0.33333333333333333333333333, 0.6666666666666666666666666666])
         random_number = np.random.randint(1, 11)
 
         if initialize:

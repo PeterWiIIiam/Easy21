@@ -1,5 +1,7 @@
 from main import *
 import numpy as np
+import matplotlib as mpl
+mpl.use('TkAgg')
 import matplotlib.pylab as plt
 from mpl_toolkits.mplot3d import Axes3D
 
