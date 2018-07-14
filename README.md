@@ -1,1 +1,2 @@
 # Easy21
+## Discussion
