@@ -1,4 +1,5 @@
-from main import *
+from utils import *
+from plots import *
 import numpy as np
 import matplotlib as mpl
 mpl.use('TkAgg')
@@ -39,20 +40,7 @@ def initialize_a_sequence():
         
     return dealer_first_card, state_sequence, award_sequence, action_sequence, N
 
-def epsilon_greedy(dealer_first_card, player_sum, epsilon, Q):
-    
-    goal = np.random.choice(['random', 'optimal'], p=[epsilon, 1 - epsilon])
-    
-    if goal == 'random':
-        action = np.random.randint(0, 2)
-        print("action in e greedy", goal, action)
-    else:
-        Q_s = Q[dealer_first_card, player_sum, :]
 
-        action = np.argmax(Q_s)
-        print("decide to be greedy", action, "player sum", player_sum, "state currntly in", Q_s, "action to take", action)
-    return action
-    
 
 def perform_sequence( N, Q):
     
