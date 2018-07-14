@@ -72,7 +72,7 @@ def epsilon_greedy_linear(dealer_first_card, player_sum, theta, epsilon):
 def linear_control():
 
     gm = 1
-    ld = 0
+    ld = 1
     alpha = 0.01
     epsilon = 0.05
 
@@ -83,8 +83,9 @@ def linear_control():
 
     theta = np.random.rand(3, 6, 2)
     E = np.zeros_like(theta)
+    cost = np.zeros([11, 22, 2])
 
-    for episode_num in range(1000000):
+    for episode_num in range(1000):
 
         state = initializer()
 
@@ -102,7 +103,7 @@ def linear_control():
             action_sequence.append(action)
 
             print(state)
-
+            prev_action = action
             if next_state == None:
 
                 y = award
@@ -117,11 +118,12 @@ def linear_control():
 
             E = gm * ld * E + feature
             y_hat = dot(feature, theta)
-            delta_theta = (y - y_hat) * feature * E
-            theta += delta_theta * alpha
+            delta_theta = (y - y_hat) * feature
+            theta += delta_theta * alpha * E
             state = next_state
+            cost[dealer_first_card, state["player_sum"], prev_action] = np.square(y - y_hat)
 
-
+    plot_learning_curve(cost)
 
 if __name__ == '__main__':
     linear_control()

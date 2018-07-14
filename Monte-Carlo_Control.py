@@ -1,10 +1,6 @@
 from utils import *
 from plots import *
 import numpy as np
-import matplotlib as mpl
-mpl.use('TkAgg')
-import matplotlib.pylab as plt
-from mpl_toolkits.mplot3d import Axes3D
 
 
 def initialize_a_sequence():
@@ -115,20 +111,9 @@ def monte_carlo_control():
     # print("N")
     # print(N)
 
-    V = np.max(Q, axis=-1)
-    print(V.shape)
-    
-    print(V.shape)
-    fig = plt.figure()
-    print(V)
-    ax = fig.add_subplot(111, projection='3d')
-    x, y = np.meshgrid(range(V.shape[1]), range(V.shape[0]))
-    print(x.shape)
-    print(y.shape)
-    ax.plot_wireframe(x, y, V)
-    plt.show()
-    
-#    plt.savefig("demo.png")
+    plot_state_value_function(Q)
+
+    np.save("activation_values", Q)
     return Q
     
 
