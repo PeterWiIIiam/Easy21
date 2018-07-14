@@ -43,7 +43,7 @@ def initializer():
 
 def step(state, action):
         print("take you to the next step")
-        next_state = copy.copy(state)
+        next_state = state
 	
         if action == 1:
                 player_card = draw_randomly()

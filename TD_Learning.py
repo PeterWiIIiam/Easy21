@@ -24,10 +24,11 @@ def TD_control():
         while state != None:
             print("state when starting steps", state)
 
+            prev_player_sum = state["player_sum"]
             next_state, award = step(state, action)
-            N[dealer_first_card, state["player_sum"], action] += 1
+            N[dealer_first_card, prev_player_sum, action] += 1
 
-            state_sequence.append(state["player_sum"])
+            state_sequence.append(prev_player_sum)
             award_sequence.append(award)
             action_sequence.append(action)
 
@@ -36,9 +37,9 @@ def TD_control():
             if next_state == None:
                 G_t = award
 
-                Q[dealer_first_card, state["player_sum"], action] += 1 / N[
-                    dealer_first_card, state["player_sum"], action] * (G_t - Q[
-                    dealer_first_card, state["player_sum"], action])
+                Q[dealer_first_card, prev_player_sum, action] += 1 / N[
+                    dealer_first_card, prev_player_sum, action] * (G_t - Q[
+                    dealer_first_card, prev_player_sum, action])
 
             else:
                 epsilon = 100 / (100 + np.sum(N[dealer_first_card, next_state["player_sum"], :]))
@@ -46,9 +47,9 @@ def TD_control():
 
                 G_t = award + Q[dealer_first_card, next_state["player_sum"], next_action]
 
-                Q[dealer_first_card, state["player_sum"], action] += 1 / N[
-                    dealer_first_card, state["player_sum"], action] * (G_t - Q[
-                    dealer_first_card, state["player_sum"], action])
+                Q[dealer_first_card, prev_player_sum, action] += 1 / N[
+                    dealer_first_card, prev_player_sum, action] * (G_t - Q[
+                    dealer_first_card, prev_player_sum, action])
 
                 action = next_action
 
@@ -83,10 +84,11 @@ def TD_control_lambda_backward():
         while state != None:
             print("state when starting steps", state)
 
+            prev_player_sum = state["player_sum"]
             next_state, award = step(state, action)
-            N[dealer_first_card, state["player_sum"], action] += 1
+            N[dealer_first_card, prev_player_sum, action] += 1
 
-            state_sequence.append(state["player_sum"])
+            state_sequence.append(prev_player_sum)
             award_sequence.append(award)
             action_sequence.append(action)
 
@@ -96,18 +98,18 @@ def TD_control_lambda_backward():
             E[dealer_first_card, state['player_sum'], action] += 1
 
             if next_state == None:
-                delta_t = award - Q[dealer_first_card, state["player_sum"], next_action]
+                delta_t = award - Q[dealer_first_card, prev_player_sum, next_action]
 
-                Q += 1 / N[dealer_first_card, state["player_sum"], action] * E * delta_t
+                Q += 1 / N[dealer_first_card, prev_player_sum, action] * E * delta_t
 
             else:
                 epsilon = 100 / (100 + np.sum(N[dealer_first_card, next_state["player_sum"], :]))
                 next_action = epsilon_greedy(dealer_first_card, next_state["player_sum"], epsilon, Q)
 
                 delta_t = award + gm * Q[dealer_first_card, next_state["player_sum"], next_action] - \
-                          Q[dealer_first_card, state["player_sum"], next_action]
+                          Q[dealer_first_card, prev_player_sum, next_action]
 
-                Q += 1 / N[dealer_first_card, state["player_sum"], action] * E * delta_t
+                Q += 1 / N[dealer_first_card, prev_player_sum, action] * E * delta_t
 
                 action = next_action
 
