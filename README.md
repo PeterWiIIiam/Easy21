@@ -2,5 +2,7 @@
 ## Discussion
 
 ### What are the pros and cons of bootstrapping in Easy21?
+#### Bootstrapping helps reduce the variance but it increases the bias. It allows updates with varying step interval rather than waiting till the end of an episode. 
+
 
 
