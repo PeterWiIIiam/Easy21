@@ -116,10 +116,11 @@ def linear_control():
                 action = next_action
 
 
-            E = gm * ld * E + feature
+
             y_hat = dot(feature, theta)
-            delta_theta = (y - y_hat) * feature
-            theta += delta_theta * alpha * E
+            delta = (y - y_hat)
+            E = gm * ld * E + feature
+            theta +=  alpha * E * delta
             state = next_state
             cost[dealer_first_card, state["player_sum"], prev_action] = np.square(y - y_hat)
 
