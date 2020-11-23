@@ -112,7 +112,7 @@ def monte_carlo_control():
 
     # plot_state_value_function(Q)
 
-    np.save("activation_values", Q)
+    np.save("MC_Control", Q)
     np.save("visiting_times", N)
 
     return Q, N
