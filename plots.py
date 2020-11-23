@@ -20,8 +20,6 @@ def save_state_value_function(Q, filename):
 
     ax.plot_surface(x, y, V, rstride=1, cstride=1,
                 cmap='viridis',linewidths=0.2)
-    # ax.contour3D(x, y, V, 50, cmap='binary')
-    # ax.plot_wireframe(x, y, V, color="black")
     ax.view_init(elev=44, azim=-140)
     plt.ylabel("Dealer Card Value")
     plt.xlabel("Player Card Value")
