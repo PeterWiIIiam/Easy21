@@ -1,4 +1,6 @@
 # Easy21
+## Discussion
+A complete description of the project: https://github.com/XingyuHe/Easy21/blob/master/ProjectMath.pdf
 ## Usage
 Install required packages by running 
 <br /> <br /> `pip install -r requirements.txt`<br /><br />
@@ -19,8 +21,6 @@ Algorithm|State-Action Value Function | Policy (yellow - hit, purple - stay)
 Epsilon = 0 |![alt text](./imgs/Epsilon=0,-1000Trials/state-value-function-summary.gif)| ![alt text](./imgs/Epsilon=0,-1000Trials/policy-summary.gif) ![](https://...Dark.png)  |  ![](https://...Ocean.png)
 Epsilon = 1|![alt text](./imgs/Epsilon=1,1000Trials/state-value-function-summary.gif)| ![alt text](./imgs/Epsilon=1,1000Trials/policy-summary.gif)
 Linearly Decreasing Epsilon |![alt text](./imgs/VariableEpsilon-1000Trials/state-value-function-summary.gif)| ![alt text](./imgs/VariableEpsilon-1000Trials/policy-summary.gif)
-## Discussion
-A complete description of the project: https://github.com/XingyuHe/Easy21/blob/master/ProjectMath.pdf
 
 
 
