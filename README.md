@@ -1,4 +1,12 @@
 # Easy21
+## Usage
+To use Markov Decision Process and Monte Carlo to estimate state action value function, run 
+<br /> <br /> `python Markov_Decision_Process.py`<br /><br />
+To use Monte Carlo Control to estimate state action value function, run 
+<br /> <br /> `python Monte_Carlo_Control.py`<br /><br />
+
+## Results
+![alt text](./imgs/MDPMaxR.png)
 ## Discussion
 
 ### What are the pros and cons of bootstrapping in Easy21?
