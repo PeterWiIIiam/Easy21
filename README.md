@@ -20,7 +20,7 @@ Epsilon = 0 |![alt text](./imgs/Epsilon=0,-1000Trials/state-value-function-summa
 Epsilon = 1|![alt text](./imgs/Epsilon=1,1000Trials/state-value-function-summary.gif)| ![alt text](./imgs/Epsilon=1,1000Trials/policy-summary.gif)
 Linearly Decreasing Epsilon |![alt text](./imgs/VariableEpsilon-1000Trials/state-value-function-summary.gif)| ![alt text](./imgs/VariableEpsilon-1000Trials/policy-summary.gif)
 ## Discussion
-[A complete description of the project: ] (./ProjectMath.pdf)
+A complete description of the project: https://github.com/XingyuHe/Easy21/blob/master/ProjectMath.pdf
 
 
 
