@@ -1,6 +1,6 @@
 # Easy21
 ## Discussion
-A complete description of the project: https://github.com/XingyuHe/Easy21/blob/master/ProjectMath.pdf
+A complete description of the math: https://github.com/XingyuHe/Easy21/blob/master/ProjectMath.pdf
 ## Usage
 Install required packages by running 
 <br /> <br /> `pip install -r requirements.txt`<br /><br />
